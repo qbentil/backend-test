@@ -1,6 +1,6 @@
 'use strict';
 
-import { TokenPayload } from './token.types';
+import { TokenPayload } from '@/types';
 import config from '@/config';
 import jwt from 'jsonwebtoken';
 
