@@ -2,6 +2,7 @@ import { IActionableStep } from "./patient.types";
 import { Types } from "mongoose";
 
 export interface IDoctor {
+    code: string;
     user: Types.ObjectId;
     specialization?: string;
     patients: Types.ObjectId[];

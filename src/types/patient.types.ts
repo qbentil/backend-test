@@ -1,6 +1,7 @@
 import { Types } from "mongoose";
 
 export interface IPatient {
+    code: string;
     user: Types.ObjectId;
     assignedDoctor?: Types.ObjectId;
     medicalHistory?: string[];
