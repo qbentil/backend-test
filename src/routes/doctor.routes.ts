@@ -1,11 +1,26 @@
-import { Router } from "express";
+import { Router } from 'express';
 
-const route = Router();
+const router = Router();
 
-
-route.get("/new", (req, res) => {
-    res.send("New");
+// update information
+router.put('/update', async (req, res) => {
+  res.send('update information');
 });
 
+// add note to patient
+router.post('/add-note', async (req, res) => {
+  res.send('add note to patient');
+});
 
-export default route;
+// get all patients
+router.get('/patients', async (req, res) => {
+  res.send('get all patients');
+});
+
+// get patient by id
+router.get('/patient/:id', async (req, res) => {});
+
+// retrive reminders
+router.get('/reminders', async (req, res) => {});
+
+export default router;

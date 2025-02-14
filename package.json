@@ -6,7 +6,9 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "format": "prettier --write \"src/**/*.{js,ts}\"",
+    "lint": "eslint . --ext .ts"
   },
   "author": "qbentil",
   "license": "ISC",
@@ -20,6 +22,7 @@
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.10.0",
+    "prettier": "^3.5.1",
     "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {

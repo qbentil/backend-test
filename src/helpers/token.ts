@@ -10,7 +10,7 @@ export async function __validateAuthToken(
   return new Promise(function (resolve, reject) {
     jwt.verify(
       token,
-      Buffer.from(config.auth.secret || "", 'base64'),
+      Buffer.from(config.auth.secret || '', 'base64'),
       { ignoreNotBefore: true },
       function (err, payload) {
         if (err) reject(new Error('AuthorizationExpired'));
@@ -26,10 +26,10 @@ export async function __generateAuthToken(
   return new Promise((resolve, reject) => {
     jwt.sign(
       payload,
-      Buffer.from(config.auth.secret || "", "base64"),
+      Buffer.from(config.auth.secret || '', 'base64'),
       {
         audience: config.app.name,
-        issuer: config.app.name,
+        issuer: config.app.name
       },
       (err, token) => {
         if (err) reject(err);
@@ -39,12 +39,11 @@ export async function __generateAuthToken(
   });
 }
 
-
 export async function __generateToken(payload: TokenPayload): Promise<string> {
   return new Promise(function (resolve, reject) {
     jwt.sign(
       payload,
-      Buffer.from(config.auth.secret || "", 'base64'),
+      Buffer.from(config.auth.secret || '', 'base64'),
       {
         audience: config.app.name,
         issuer: config.app.name

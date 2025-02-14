@@ -1,16 +1,15 @@
-import { IActionableStep } from "./patient.types";
-import { Types } from "mongoose";
+import { IActionableStep } from './patient.types';
+import { Types } from 'mongoose';
 
 export interface IDoctor {
-    code: string;
-    user: Types.ObjectId;
-    specialization?: string;
-    patients: Types.ObjectId[];
+  code: string;
+  user: Types.ObjectId;
+  specialization?: string;
+  patients: Types.ObjectId[];
 }
 
-
 export interface IDoctorModel extends IDoctor, Document {
-    _id: Types.ObjectId;
-    createdAt: Date;
-    updatedAt: Date;
+  _id: Types.ObjectId;
+  createdAt: Date;
+  updatedAt: Date;
 }

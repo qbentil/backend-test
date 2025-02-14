@@ -1,4 +1,4 @@
-import { HttpStatus } from "./response.utils";
+import { HttpStatus } from './response.utils';
 
 /**
  * ApiError extends Error
@@ -12,3 +12,10 @@ export class ApiError extends Error {
     this.statusCode = statusCode;
   }
 }
+
+export const CreateError = (code: number, message: string) => {
+  const error = new Error() as any;
+  error.message = message;
+  error.statusCode = code;
+  return error;
+};

@@ -1,23 +1,13 @@
-import { login, signup } from "../services";
+import { Login, Signup } from '../controllers';
 
-import { Router } from "express";
-import { UserValidation } from "../validations";
-import { ValidationMiddleware } from "../middlewares";
+import { Router } from 'express';
+import { UserValidation } from '../validations';
+import { ValidationMiddleware } from '../middlewares';
 
 const route = Router();
 
+route.post('/signup', ValidationMiddleware(UserValidation.new), Signup);
 
-route.post(
-    "/signup", 
-    ValidationMiddleware(UserValidation.new),
-    signup
-);
-
-route.post(
-    "/login", 
-    ValidationMiddleware(UserValidation.login),
-    login
-);
-
+route.post('/login', ValidationMiddleware(UserValidation.login), Login);
 
 export default route;

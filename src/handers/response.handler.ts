@@ -4,7 +4,6 @@ import { Response } from 'express';
 import config from '../config';
 
 export class ResponseHandler {
-
   constructor(public res: Response) {}
 
   failure(message: string) {

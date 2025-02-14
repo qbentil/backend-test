@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import { AppConstants } from '../constants';
 import { ResponseHandler } from '../handers';
 
-export  const  ValidationMiddleware =(
+export const ValidationMiddleware = (
   schema: any,
   property: string = AppConstants.REQUEST_TYPE.BODY
 ) => {
@@ -27,4 +27,4 @@ export  const  ValidationMiddleware =(
       return next(error);
     }
   };
-}
+};

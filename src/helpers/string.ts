@@ -5,8 +5,7 @@ import { Model, Types, model } from 'mongoose';
 import _ from 'lodash';
 
 export function __setDescription(_description: string): string {
-  return _
-    .chain(_description)
+  return _.chain(_description)
     .split('. ')
     .map(_.trim)
     .map(_.toLower)
@@ -32,8 +31,7 @@ export function __setPhone(_phone: String): string {
 }
 
 export function __genCode(_length: number = 6): string {
-  return _
-    .chain('9')
+  return _.chain('9')
     .repeat(_length)
     .parseInt()
     .random()
@@ -59,7 +57,6 @@ export async function __genUniqueCode(
 
   return code;
 }
-
 
 export const gql = (value: TemplateStringsArray) => value.toString();
 
