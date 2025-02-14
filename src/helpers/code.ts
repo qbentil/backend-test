@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 
-import { codes as __templates } from "../templates";
-import dayjs from "dayjs";
-import lodash from "lodash";
-import { model } from "mongoose";
+import { codes as __templates } from '../templates';
+import dayjs from 'dayjs';
+import lodash from 'lodash';
+import { model } from 'mongoose';
 
 export function __incrementCode(_code: string): string {
   let __code = lodash.times(_code.length, function (i) {
@@ -29,7 +29,7 @@ export async function __generateCode(
   _model: keyof typeof __templates,
   _filter: object = {},
   _data: object = {},
-  _field: string = "code",
+  _field: string = 'code'
 ): Promise<string> {
   return new Promise(async function (resolve, reject) {
     await model(_model)

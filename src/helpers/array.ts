@@ -1,15 +1,15 @@
 export function getRandomItems<T>(arr: T[], count: number = 1): T[] {
   if (arr.length === 0) {
-    throw new Error("Array cannot be empty");
+    throw new Error('Array cannot be empty');
   }
 
   if (count <= 0) {
-    throw new Error("Count must be greater than 0");
+    throw new Error('Count must be greater than 0');
   }
 
   if (count > arr.length) {
     throw new Error(
-      `Cannot get ${count} items from an array of length ${arr.length}`,
+      `Cannot get ${count} items from an array of length ${arr.length}`
     );
   }
 

@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
 
 export function __getDateStart(_date: Date | string): Date {
   return new Date(new Date(_date).setHours(0, 0, 0, 0));
@@ -12,14 +12,14 @@ export function __getDateEnd(_date: Date | string): Date {
 
 export function __getNights(
   _startDate: Date | string,
-  _endDate: Date | string,
+  _endDate: Date | string
 ): number {
   const start = new Date(_startDate); //clone
   const end = new Date(_endDate); //clone
   let nightsCount = 0;
 
   while (end > start) {
-    if (dayjs(start).startOf("day").isSame(dayjs(end).startOf("day"))) {
+    if (dayjs(start).startOf('day').isSame(dayjs(end).startOf('day'))) {
       break;
     }
     nightsCount++;
@@ -41,5 +41,5 @@ export default {
   __getDateStart,
   __getDateEnd,
   __getNights,
-  __roundToHour,
+  __roundToHour
 };

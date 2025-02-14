@@ -1,15 +1,15 @@
-import { ChooseDoctor, MyReminders, patientProfile } from "../controllers";
+import { ChooseDoctor, MyReminders, patientProfile } from '../controllers';
 
-import { Router } from "express";
+import { Router } from 'express';
 
 const route = Router();
 
-route.post("/assign-doctor", ChooseDoctor);
+route.post('/assign-doctor', ChooseDoctor);
 
 // get reminders
-route.get("/reminders", MyReminders);
+route.get('/reminders', MyReminders);
 
 // get patient profile
-route.get("/profile", patientProfile);
+route.get('/profile', patientProfile);
 
 export default route;

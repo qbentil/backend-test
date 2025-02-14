@@ -1,1 +1,1 @@
-export { default as codes } from "./codes";
+export { default as codes } from './codes';

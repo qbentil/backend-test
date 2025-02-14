@@ -1,4 +1,4 @@
-import { HttpStatus } from "./response.utils";
+import { HttpStatus } from './response.utils';
 
 /**
  * ApiError extends Error

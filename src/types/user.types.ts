@@ -1,6 +1,6 @@
-import mongoose, { Document } from "mongoose";
+import mongoose, { Document } from 'mongoose';
 
-import { SYS_USER_TYPE } from "./token.types";
+import { SYS_USER_TYPE } from './token.types';
 
 export interface IUser {
   name: string;

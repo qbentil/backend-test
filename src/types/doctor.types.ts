@@ -1,5 +1,5 @@
-import { IActionableStep } from "./patient.types";
-import { Types } from "mongoose";
+import { IActionableStep } from './patient.types';
+import { Types } from 'mongoose';
 
 export interface IDoctor {
   code: string;

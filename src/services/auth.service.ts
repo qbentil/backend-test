@@ -1,7 +1,7 @@
-import { IUser, IUserModel } from "../types";
+import { IUser, IUserModel } from '../types';
 
-import { ApiError } from "../utils";
-import { USER_MODEL } from "../models";
+import { ApiError } from '../utils';
+import { USER_MODEL } from '../models';
 
 export const signup = async (input: IUser) => {
   try {
@@ -16,13 +16,13 @@ export const login = async (input: { email: string; password: string }) => {
     const user = await USER_MODEL.findOne<IUserModel>({ email: input.email });
 
     if (!user) {
-      throw new ApiError("User not found", 404);
+      throw new ApiError('User not found', 404);
     }
 
     // Verify password using the user model's verifyPassword method
     const isMatch = await user.verifyPassword(input.password);
     if (!isMatch) {
-      throw new ApiError("Invalid password", 401);
+      throw new ApiError('Invalid password', 401);
     }
 
     // update last login
