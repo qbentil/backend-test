@@ -92,7 +92,7 @@ $ yarn dev
 ```
 
 ## :memo: License ##
-This project is under the MIT license. For more details, see the [LICENSE](LICENSE.md) file.
+🕹️
 
 ---
 
