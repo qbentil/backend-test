@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-import { IReminderModel } from "@/types";
+import { IReminderModel } from "../types";
 import dayjs from "dayjs";
 
 const ReminderSchema = new Schema<IReminderModel>(

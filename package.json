@@ -17,10 +17,9 @@
     "dayjs": "^1.11.13",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.10.0",
-    "nanoid": "^5.0.9",
-    "nanoid-dictionary": "^4.3.0",
     "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {

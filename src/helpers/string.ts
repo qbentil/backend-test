@@ -1,9 +1,7 @@
 'use strict';
 
-import { Model, model, Types  } from 'mongoose';
+import { Model, Types, model } from 'mongoose';
 
-import { alphanumeric } from 'nanoid-dictionary';
-import { customAlphabet } from 'nanoid';
 import _ from 'lodash';
 
 export function __setDescription(_description: string): string {
@@ -62,9 +60,6 @@ export async function __genUniqueCode(
   return code;
 }
 
-export function __genPassword(_length: number = 8): string {
-  return customAlphabet(alphanumeric, _length)();
-}
 
 export const gql = (value: TemplateStringsArray) => value.toString();
 

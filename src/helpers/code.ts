@@ -1,6 +1,6 @@
 'use strict';
 
-import { codes as __templates } from '@/templates';
+import { codes as __templates } from '../templates';
 import dayjs from 'dayjs';
 import lodash from 'lodash';
 import { model } from 'mongoose';

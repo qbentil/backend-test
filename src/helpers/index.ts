@@ -1,6 +1,5 @@
 export * from './code';
 export * from './array';
-export * from './object';
 export * from './string';
 export * from './password';
 export * from './token';

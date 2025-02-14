@@ -1,7 +1,7 @@
 'use strict';
 
-import { TokenPayload } from '@/types';
-import config from '@/config';
+import { TokenPayload } from '../types';
+import config from '../config';
 import jwt from 'jsonwebtoken';
 
 export async function __validateAuthToken(

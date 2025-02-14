@@ -1,6 +1,6 @@
-import { IUser } from "@/types";
+import { IUser } from "../types";
 import { QueryOptions } from "mongoose";
-import { USER_MODEL } from "@/models";
+import { USER_MODEL } from "../models";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 

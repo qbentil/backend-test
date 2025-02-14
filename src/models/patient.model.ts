@@ -1,8 +1,8 @@
-import { IActionableStep, IPatientModel } from "@/types";
-import { __decryptData, __encryptData, callLLM } from "@/helpers";
+import { IActionableStep, IPatientModel } from "../types";
+import { __decryptData, __encryptData, callLLM } from "../helpers";
 import mongoose, { Model, Schema } from "mongoose";
 
-import { createReminder } from "@/services";
+import { createReminder } from "../services";
 
 const PatientSchema = new Schema<IPatientModel>(
     {

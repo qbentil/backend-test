@@ -1,6 +1,6 @@
-import { IUserModel, SYS_USER_TYPES } from "@/types";
+import { IUserModel, SYS_USER_TYPES } from "../types";
 import { __encryptPassword, __generateAuthToken, __verifyPassword } from "../helpers";
-import { initDoctor, initPatient } from "@/services";
+import { initDoctor, initPatient } from "../services";
 import mongoose, { Model, Schema } from "mongoose";
 
 const UserSchema = new Schema<IUserModel>(

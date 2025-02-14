@@ -1,6 +1,6 @@
-import { IReminder } from '@/types';
+import { IReminder } from '../types';
 import { QueryOptions } from 'mongoose';
-import { REMINDER_MODEL } from '@/models';
+import { REMINDER_MODEL } from '../models';
 
 export const createReminder = async (reminder: IReminder) => {
     try {

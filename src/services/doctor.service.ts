@@ -1,4 +1,4 @@
-import { DOCTOR_MODEL } from "@/models";
+import { DOCTOR_MODEL } from "../models";
 import { Types } from "mongoose";
 
 export const initDoctor = async (user:Types.ObjectId) => {
