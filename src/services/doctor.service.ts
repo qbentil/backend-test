@@ -1,6 +1,7 @@
 import { DOCTOR_MODEL, PATIENT_MODEL } from '../models';
 import { QueryOptions, Types } from 'mongoose';
 
+import { ApiError } from '../utils';
 import { IPatientModel } from '../types';
 import { __generateCode } from '../helpers';
 
@@ -109,5 +110,101 @@ export const ReadPatientNotes = async (patientId: Types.ObjectId) => {
   }
   catch (error: any) {
     throw new Error(error);
+  }
+}
+export const MyPatients = async (doctorId: Types.ObjectId) => {
+  try {
+    const myPatients = await DOCTOR_MODEL.aggregate([
+      { $match: { _id: doctorId } }, // Match the doctor by ID
+      {
+        $lookup: {
+          from: 'patients', // Assuming 'patients' is the collection name
+          localField: 'patients', // Field in the Doctor model
+          foreignField: '_id', // Field in the Patient model
+          as: 'patientDetails'
+        }
+      },
+      {
+        $unwind: '$patientDetails' // Unwind the array to work with individual patient documents
+      },
+      {
+        $lookup: {
+          from: 'users', // Assuming 'users' is the collection name
+          localField: 'patientDetails.user', // Assuming Patient model has a `user` reference
+          foreignField: '_id', // Field in the User model
+          as: 'patientDetails.userInfo'
+        }
+      },
+      {
+        $unwind: '$patientDetails.userInfo' // Unwind the user info
+      },
+      {
+        $project: {
+          _id: '$patientDetails._id', // Keep patient ID
+          name: '$patientDetails.userInfo.name', // Get name from User model
+          email: '$patientDetails.userInfo.email', // Get email from User model
+          assignedDoctor: 1, // Include other fields if needed
+        }
+      }
+    ]);
+
+    if (!myPatients.length) {
+      throw new ApiError('No patients found for this doctor', 404);
+    }
+
+    return myPatients;
+  } catch (error: any) {
+    throw new ApiError(error.message || 'Error fetching patients', 500);
+  }
+};
+
+export const MyPatient = async (doctorId: Types.ObjectId, patientId: Types.ObjectId) => {
+  try {
+    const patient = await DOCTOR_MODEL.aggregate([
+      { $match: { _id: doctorId } }, // Match the doctor by ID
+      {
+        $lookup: {
+          from: 'patients', // Assuming 'patients' is the collection name
+          localField: 'patients', // Field in the Doctor model
+          foreignField: '_id', // Field in the Patient model
+          as: 'patientDetails'
+        }
+      },
+      {
+        $unwind: '$patientDetails' // Unwind the array to work with individual patient documents
+      },
+      {
+        $lookup: {
+          from: 'users', // Assuming 'users' is the collection name
+          localField: 'patientDetails.user', // Assuming Patient model has a `user` reference
+          foreignField: '_id', // Field in the User model
+          as: 'patientDetails.userInfo'
+        }
+      },
+      {
+        $unwind: '$patientDetails.userInfo' // Unwind the user info
+      },
+      {
+        $match: {
+          'patientDetails._id': patientId
+        }
+      },
+      {
+        $project: {
+          _id: '$patientDetails._id', // Keep patient ID
+          name: '$patientDetails.userInfo.name', // Get name from User model
+          email: '$patientDetails.userInfo.email', // Get email from User model
+          assignedDoctor: 1, // Include other fields if needed
+        }
+      }
+    ]);
+
+    if (!patient.length) {
+      throw new ApiError('Patient not found', 404);
+    }
+
+    return patient[0];
+  } catch (error: any) {
+    throw new ApiError(error.message || 'Error fetching patient', 500);
   }
 }

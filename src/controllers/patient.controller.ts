@@ -45,3 +45,4 @@ export const patientProfile = async (req: Request, res: Response, next: NextFunc
     next(error);
   }
 };
+

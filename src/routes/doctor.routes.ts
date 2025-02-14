@@ -1,24 +1,20 @@
+import { AddNoteToPatient, Doctorpatients, GetPatientById, UpdateDoctorInformation } from '../controllers';
+
 import { Router } from 'express';
 
 const router = Router();
 
 // update information
-router.put('/update', async (req, res) => {
-  res.send('update information');
-});
+router.put('/update', UpdateDoctorInformation);
 
 // add note to patient
-router.post('/add-note', async (req, res) => {
-  res.send('add note to patient');
-});
+router.post('/add-note', AddNoteToPatient);
 
 // get all patients
-router.get('/patients', async (req, res) => {
-  res.send('get all patients');
-});
+router.get('/patients', Doctorpatients);
 
 // get patient by id
-router.get('/patient/:id', async (req, res) => {});
+router.get('/patient/:id', GetPatientById);
 
 // retrive reminders
 router.get('/reminders', async (req, res) => {});
