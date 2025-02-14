@@ -1,29 +1,29 @@
-import * as Services from '../services';
+import * as Services from "../services";
 
-import { NextFunction, Request, Response } from 'express';
-import { __genUniqueCode, __generateCode } from '../helpers';
+import { NextFunction, Request, Response } from "express";
+import { __genUniqueCode, __generateCode } from "../helpers";
 
-import { ResponseHandler } from '../handers';
+import { ResponseHandler } from "../handers";
 
 export const Signup = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     const userExist = await Services.getUser({ email: req.body.email });
 
     if (userExist) {
-      new ResponseHandler(res).failure('User already exist');
+      new ResponseHandler(res).failure("User already exist");
     } else {
-      const __code = await __genUniqueCode('User');
+      const __code = await __genUniqueCode("User");
       const user = await Services.signup({
         ...req.body,
-        code: __code
+        code: __code,
       });
 
       if (!user) {
-        new ResponseHandler(res).failure('User not created');
+        new ResponseHandler(res).failure("User not created");
       } else {
         new ResponseHandler(res).successWithData(user);
       }
@@ -36,13 +36,13 @@ export const Signup = async (
 export const Login = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     const user = await Services.login(req.body);
 
     if (!user) {
-      new ResponseHandler(res).failure('User not found');
+      new ResponseHandler(res).failure("User not found");
     } else {
       new ResponseHandler(res).successWithData(user);
     }

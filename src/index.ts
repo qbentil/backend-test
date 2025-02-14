@@ -1,18 +1,18 @@
-import { AUTH_ROUTES, DOCTURE_ROUTES, PATIENT_ROUTES } from './routes';
+import { AUTH_ROUTES, DOCTURE_ROUTES, PATIENT_ROUTES } from "./routes";
 import {
   AuthenticateUser,
-  AuthenticateUserbyRole
-} from './middlewares/auth.middleware';
-import { SYS_USER_TYPE, TokenPayload } from './types';
-import express, { Express, Request, Response } from 'express';
+  AuthenticateUserbyRole,
+} from "./middlewares/auth.middleware";
+import { SYS_USER_TYPE, TokenPayload } from "./types";
+import express, { Express, Request, Response } from "express";
 
-import { AppConstants } from './constants';
-import { Errorhandler } from './middlewares';
-import { MONGOBD_CONNECT } from './database';
-import cors from 'cors';
-import dotenv from 'dotenv';
+import { AppConstants } from "./constants";
+import { Errorhandler } from "./middlewares";
+import { MONGOBD_CONNECT } from "./database";
+import cors from "cors";
+import dotenv from "dotenv";
 
-declare module 'express-serve-static-core' {
+declare module "express-serve-static-core" {
   interface Request {
     tokenPayload?: TokenPayload;
   }
@@ -26,24 +26,24 @@ APP.use(express.json());
 APP.use(express.urlencoded({ extended: true }));
 APP.use(
   cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-  })
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
 );
 
-APP.use('/auth', AUTH_ROUTES);
+APP.use("/auth", AUTH_ROUTES);
 APP.use(
-  '/patient',
+  "/patient",
   AuthenticateUser,
   AuthenticateUserbyRole(AppConstants.ROLES.PATIENT as SYS_USER_TYPE),
-  PATIENT_ROUTES
+  PATIENT_ROUTES,
 );
 APP.use(
-  '/doctor',
+  "/doctor",
   DOCTURE_ROUTES,
   AuthenticateUser,
-  AuthenticateUserbyRole(AppConstants.ROLES.DOCTOR as SYS_USER_TYPE)
+  AuthenticateUserbyRole(AppConstants.ROLES.DOCTOR as SYS_USER_TYPE),
 );
 
 // Error Handler

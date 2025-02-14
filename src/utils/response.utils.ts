@@ -6,5 +6,5 @@ export enum HttpStatus {
   Forbidden = 403,
   NotFound = 404,
   UnprocessableEntity = 422,
-  InternalServerError = 500
+  InternalServerError = 500,
 }

@@ -1,16 +1,16 @@
-'use strict';
+"use strict";
 
-import { Model, Types, model } from 'mongoose';
+import { Model, Types, model } from "mongoose";
 
-import _ from 'lodash';
+import _ from "lodash";
 
 export function __setDescription(_description: string): string {
   return _.chain(_description)
-    .split('. ')
+    .split(". ")
     .map(_.trim)
     .map(_.toLower)
     .map(_.capitalize)
-    .join('. ')
+    .join(". ")
     .value();
 }
 
@@ -27,21 +27,21 @@ export function __setPermission(_permission: string): string {
 }
 
 export function __setPhone(_phone: String): string {
-  return _.chain(_phone).slice(-9).join('').padStart(12, '233').value();
+  return _.chain(_phone).slice(-9).join("").padStart(12, "233").value();
 }
 
 export function __genCode(_length: number = 6): string {
-  return _.chain('9')
+  return _.chain("9")
     .repeat(_length)
     .parseInt()
     .random()
-    .padStart(_length, '0')
+    .padStart(_length, "0")
     .value();
 }
 
 export async function __genUniqueCode(
   _model: string,
-  _length: number = 6
+  _length: number = 6,
 ): Promise<string> {
   const __Model = model(_model);
   let code: string;

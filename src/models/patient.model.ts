@@ -1,41 +1,41 @@
-import { IActionableStep, IPatientModel } from '../types';
-import { __decryptData, __encryptData, callLLM } from '../helpers';
-import mongoose, { Model, Schema } from 'mongoose';
+import { IActionableStep, IPatientModel } from "../types";
+import { __decryptData, __encryptData, callLLM } from "../helpers";
+import mongoose, { Model, Schema } from "mongoose";
 
-import { createReminder } from '../services';
+import { createReminder } from "../services";
 
 const PatientSchema = new Schema<IPatientModel>(
   {
     code: {
       type: String,
       required: true,
-      unique: true
+      unique: true,
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: true
+      ref: "User",
+      required: true,
     },
     assignedDoctor: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Doctor',
-      default: null
+      ref: "Doctor",
+      default: null,
     },
     medicalHistory: {
       type: [String],
-      default: []
+      default: [],
     },
     notes: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 // Encrypt notes before saving
-PatientSchema.pre('save', async function (next) {
-  if (this.isModified('notes') && this.notes) {
+PatientSchema.pre("save", async function (next) {
+  if (this.isModified("notes") && this.notes) {
     this.notes = JSON.stringify(__encryptData(this.notes));
   }
   next();
@@ -49,7 +49,7 @@ PatientSchema.methods.addMedicalHistory = function (history: string): void {
 
 // Method to assign a doctor
 PatientSchema.methods.assignDoctor = function (
-  doctorId: mongoose.Types.ObjectId
+  doctorId: mongoose.Types.ObjectId,
 ): void {
   this.assignedDoctor = doctorId;
   this.save();
@@ -63,7 +63,7 @@ PatientSchema.methods.toJSON = function () {
       const { data, tag } = JSON.parse(patient.notes);
       patient.notes = __decryptData(data, tag);
     } catch (error) {
-      throw new Error('Error decrypting notes');
+      throw new Error("Error decrypting notes");
     }
     patient.notes = null;
   }
@@ -92,26 +92,26 @@ PatientSchema.methods.extractActionableSteps = async function (note: string) {
 
 // 🔹 Schedule reminders
 PatientSchema.methods.scheduleReminders = async function (
-  steps: IActionableStep
+  steps: IActionableStep,
 ) {
   for (const planItem of steps.plan) {
     await createReminder({
       patient: this._id,
       task: planItem.task,
       scheduledDate: planItem.date,
-      completed: false
+      completed: false,
     });
   }
 };
 
 // 🔹 Cancel previous reminders
 PatientSchema.methods.cancelPreviousReminders = async function () {
-  await mongoose.model('Reminder').deleteMany({ patient: this._id });
+  await mongoose.model("Reminder").deleteMany({ patient: this._id });
 };
 
 const Patient: Model<IPatientModel> = mongoose.model<IPatientModel>(
-  'Patient',
-  PatientSchema
+  "Patient",
+  PatientSchema,
 );
 
 export default Patient;

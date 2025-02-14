@@ -1,7 +1,7 @@
-import { ApiError, HttpStatus } from '../utils';
+import { ApiError, HttpStatus } from "../utils";
 
-import { Response } from 'express';
-import config from '../config';
+import { Response } from "express";
+import config from "../config";
 
 export class ResponseHandler {
   constructor(public res: Response) {}
@@ -9,7 +9,7 @@ export class ResponseHandler {
   failure(message: string) {
     this.res.status(HttpStatus.Success).json({
       success: false,
-      message
+      message,
     });
 
     return this;
@@ -19,7 +19,7 @@ export class ResponseHandler {
     this.res.status(HttpStatus.Success).json({
       success: false,
       data,
-      message
+      message,
     });
 
     return this;
@@ -28,7 +28,7 @@ export class ResponseHandler {
   success(message: string) {
     this.res.status(HttpStatus.Success).json({
       success: true,
-      message
+      message,
     });
 
     return this;
@@ -37,7 +37,7 @@ export class ResponseHandler {
   successWithData<T>(data: T) {
     this.res.status(HttpStatus.Success).json({
       success: true,
-      data
+      data,
     });
 
     return this;
@@ -47,7 +47,7 @@ export class ResponseHandler {
     this.res.status(error.statusCode ?? HttpStatus.InternalServerError).json({
       success: false,
       message: error.message,
-      stack: config.app.env === 'development' ? error.stack : null
+      stack: config.app.env === "development" ? error.stack : null,
     });
 
     return this;

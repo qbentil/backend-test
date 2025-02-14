@@ -1,6 +1,6 @@
-import mongoose, { Document } from 'mongoose';
+import mongoose, { Document } from "mongoose";
 
-import { SYS_USER_TYPE } from './token.types';
+import { SYS_USER_TYPE } from "./token.types";
 
 export interface IUser {
   name: string;
@@ -14,7 +14,7 @@ export interface IUser {
 }
 
 export interface IUserModel extends IUser, Document {
-   generateAuthToken(): Promise<string>;
+  generateAuthToken(): Promise<string>;
   verifyPassword(password: string): Promise<boolean>;
   updateLastLogin(): void;
   createdAt: Date;

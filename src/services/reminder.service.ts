@@ -1,6 +1,6 @@
-import { IReminder } from '../types';
-import { QueryOptions } from 'mongoose';
-import { REMINDER_MODEL } from '../models';
+import { IReminder } from "../types";
+import { QueryOptions } from "mongoose";
+import { REMINDER_MODEL } from "../models";
 
 export const createReminder = async (reminder: IReminder) => {
   try {
@@ -20,7 +20,7 @@ export const getReminders = async (query: QueryOptions) => {
 
 export const updateReminder = async (
   query: QueryOptions,
-  reminder: Partial<IReminder>
+  reminder: Partial<IReminder>,
 ) => {
   try {
     return REMINDER_MODEL.findOneAndUpdate(query, reminder, { new: true });
@@ -29,11 +29,10 @@ export const updateReminder = async (
   }
 };
 
-
 export const getReminder = async (query: QueryOptions) => {
   try {
     return REMINDER_MODEL.findOne(query);
   } catch (error: any) {
     throw new Error(error);
   }
-}
+};
