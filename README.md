@@ -30,13 +30,13 @@
 <h1 align="center">Hospital Backend System</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/qbentil/hospital-bakend-system?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/qbentil/gigsama-backend-test?color=56BEB8">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/qbentil/hospital-bakend-system?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/qbentil/gigsama-backend-test?color=56BEB8">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/qbentil/hospital-bakend-system?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/qbentil/gigsama-backend-test?color=56BEB8">
 
-  <img alt="License" src="https://img.shields.io/github/license/qbentil/hospital-bakend-system?color=56BEB8">
+  <img alt="License" src="https://img.shields.io/github/license/qbentil/gigsama-backend-test?color=56BEB8">
 </p>
 
 ## :dart: About ##
@@ -44,7 +44,7 @@ The **Hospital Backend System** is a Node.js-based API designed to manage hospit
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: User authentication and authorization (JWT-based);
+:heavy_check_mark: User authentication and authorization (JWT-based); 
 :heavy_check_mark: Role-based access control (Patients, Doctors, Admins);
 :heavy_check_mark: Patient registration and profile management;
 :heavy_check_mark: Doctor-patient assignment system;
