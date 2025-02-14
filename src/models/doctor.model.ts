@@ -25,4 +25,5 @@ const DoctorSchema = new Schema<IDoctorModel>({
   ]
 });
 
+
 export default model<IDoctorModel>('Doctor', DoctorSchema);

@@ -14,7 +14,7 @@ export interface IUser {
 }
 
 export interface IUserModel extends IUser, Document {
-  generateAuthToken(): string;
+   generateAuthToken(): Promise<string>;
   verifyPassword(password: string): Promise<boolean>;
   updateLastLogin(): void;
   createdAt: Date;

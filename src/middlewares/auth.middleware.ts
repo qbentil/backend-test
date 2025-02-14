@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { SYS_USER_TYPE, TokenPayload } from '../types';
 
 import { CreateError } from '../utils';
+import { __validateAuthToken } from '../helpers';
 import config from '../config';
 import jwt from 'jsonwebtoken';
 
@@ -19,7 +20,7 @@ export const AuthenticateUser = async (
     if (!token) {
       return next(CreateError(402, 'Access denied'));
     }
-    const decoded = jwt.verify(token, config.auth.secret || '') as TokenPayload;
+    const decoded = await __validateAuthToken(token);
 
     if (!decoded) {
       return next(CreateError(403, 'Access denied'));

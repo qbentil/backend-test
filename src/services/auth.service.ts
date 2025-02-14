@@ -5,7 +5,6 @@ import { USER_MODEL } from '../models';
 
 export const signup = async (input: IUser) => {
   try {
-    console.log(input, 'service');
     return USER_MODEL.create(input);
   } catch (error: any) {
     throw new Error(error);
@@ -30,7 +29,7 @@ export const login = async (input: { email: string; password: string }) => {
     await user.updateLastLogin();
 
     // Generate token using the user model's generateAuthToken method
-    const token = user.generateAuthToken();
+    const token = await user.generateAuthToken();
 
     return { user, token };
   } catch (error: any) {

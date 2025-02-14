@@ -16,5 +16,9 @@ export const UserValidation = {
   login: Joi.object().keys({
     email: Joi.string().email().required(),
     password: Joi.string().required()
+  }),
+  id: Joi.object().keys({
+    id: Joi.string().required()
   })
+
 };

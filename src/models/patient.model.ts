@@ -18,7 +18,7 @@ const PatientSchema = new Schema<IPatientModel>(
     },
     assignedDoctor: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      ref: 'Doctor',
       default: null
     },
     medicalHistory: {
