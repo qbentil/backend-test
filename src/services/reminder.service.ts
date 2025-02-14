@@ -28,3 +28,12 @@ export const updateReminder = async (
     throw new Error(error);
   }
 };
+
+
+export const getReminder = async (query: QueryOptions) => {
+  try {
+    return REMINDER_MODEL.findOne(query);
+  } catch (error: any) {
+    throw new Error(error);
+  }
+}

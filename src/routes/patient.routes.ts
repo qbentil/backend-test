@@ -1,6 +1,6 @@
-import { ChooseDoctor } from '../controllers';
+import { ChooseDoctor, MyReminders, patientProfile } from '../controllers';
+
 import { Router } from 'express';
-import { ValidationMiddleware } from '../middlewares';
 
 const route = Router();
 
@@ -9,13 +9,9 @@ route.post('/select-doctor',
   );
 
 // get reminders
-route.get('/reminders', (req, res) => {
-  res.send('Reminders');
-});
+route.get('/reminders', MyReminders);
 
 // get patient profile
-route.get('/profile', (req, res) => {
-  res.send('Profile');
-});
+route.get('/profile', patientProfile);
 
 export default route;
