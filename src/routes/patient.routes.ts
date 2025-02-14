@@ -4,7 +4,7 @@ import { Router } from "express";
 
 const route = Router();
 
-route.post("/select-doctor", ChooseDoctor);
+route.post("/assign-doctor", ChooseDoctor);
 
 // get reminders
 route.get("/reminders", MyReminders);
