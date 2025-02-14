@@ -6,6 +6,11 @@ import { createReminder } from "@/services";
 
 const PatientSchema = new Schema<IPatientModel>(
     {
+        code: {
+            type: String,
+            required: true,
+            unique: true,
+        },
         user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User", 

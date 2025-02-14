@@ -1,7 +1,6 @@
 import { Types } from "mongoose";
 
 export interface IReminder {
-  code: string;
   patient: Types.ObjectId;
   task: string;
   scheduledDate: Date;
