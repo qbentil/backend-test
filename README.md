@@ -44,14 +44,6 @@ The **Hospital Backend System** is a Node.js-based API designed to manage hospit
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: User authentication and authorization (JWT-based); \n
-:heavy_check_mark: Role-based access control (Patients, Doctors, Admins); \n
-:heavy_check_mark: Patient registration and profile management; \n
-:heavy_check_mark: Doctor-patient assignment system; \n
-:heavy_check_mark: Appointment scheduling; \n
-:heavy_check_mark: Custom error handling middleware; \n
-:heavy_check_mark: Validation middleware using Joi; \n
-:heavy_check_mark: Aggregation pipeline for advanced querying. \n
 
 ## :rocket: Technologies ##
 The following tools were used in this project:
